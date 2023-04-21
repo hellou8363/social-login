@@ -2,8 +2,8 @@ package org.zerock.myapp.service;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.zerock.myapp.domain.KakaoOAuthTokenDTO;
-import org.zerock.myapp.domain.KakaoUserInfoDTO;
+import org.zerock.myapp.domain.kakao.KakaoOAuthTokenDTO;
+import org.zerock.myapp.domain.kakao.KakaoUserInfoDTO;
 import org.zerock.myapp.oauth.KakaoOAuth;
 
 import com.fasterxml.jackson.core.JsonProcessingException;

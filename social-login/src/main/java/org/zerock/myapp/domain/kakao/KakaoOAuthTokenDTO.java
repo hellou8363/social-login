@@ -1,4 +1,4 @@
-package org.zerock.myapp.domain;
+package org.zerock.myapp.domain.kakao;
 
 import lombok.Data;
 

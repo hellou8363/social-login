@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-import org.zerock.myapp.domain.KakaoOAuthTokenDTO;
-import org.zerock.myapp.domain.KakaoUserInfoDTO;
+import org.zerock.myapp.domain.kakao.KakaoOAuthTokenDTO;
+import org.zerock.myapp.domain.kakao.KakaoUserInfoDTO;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
