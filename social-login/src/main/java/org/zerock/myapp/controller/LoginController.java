@@ -9,10 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.zerock.myapp.domain.google.GoogleUserInfoDTO;
 import org.zerock.myapp.domain.kakao.KakaoUserInfoDTO;
 import org.zerock.myapp.domain.naver.NaverUserInfoDTO;
+import org.zerock.myapp.oauth.GoogleOAuth;
 import org.zerock.myapp.oauth.KakaoOAuth;
 import org.zerock.myapp.oauth.NaverOAuth;
+import org.zerock.myapp.service.GoogleOAuthService;
 import org.zerock.myapp.service.KakaoOAuthService;
 import org.zerock.myapp.service.NaverOAuthService;
 
@@ -30,6 +33,8 @@ public class LoginController {
 	private final KakaoOAuthService kakaoOAuthService;
 	private final NaverOAuth naverOAuth;
 	private final NaverOAuthService naverOAuthService;
+	private final GoogleOAuth googleOAuth;
+	private final GoogleOAuthService googleOAuthService;
 
 	
 	@GetMapping
@@ -76,5 +81,24 @@ public class LoginController {
 		
 		return "result";
 	} // naverLogin
+	
+	// ========== Google ==========
+	
+	@GetMapping("/google")
+	public void getGoogleOAuthUrl(HttpServletResponse response) throws IOException {
+		log.trace("getGoogleOAuthUrl() invoked.");
+		
+		response.sendRedirect(googleOAuth.responseUrl());
+	} // getGoogleOAuthUrl
+	
+	@GetMapping("/google/oauth")
+	public String googleLogin(String code, HttpSession session, Model model) throws IOException {
+		log.trace("googleLogin() invoked.");
+		
+		GoogleUserInfoDTO dto = googleOAuthService.googleLogin(code);
+		model.addAttribute("userInfo", dto);
+		
+		return "result";
+	} // googleLogin
 	
 } // end class
